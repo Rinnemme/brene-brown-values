@@ -17,7 +17,7 @@ export default function Navbar() {
           merriweather.className +
           (path === "/"
             ? " text-orange-700 transition-all duration-200 underline underline-offset-[0.7rem]"
-            : " text-black hover:text-green-500 transition-all duration-200  hover:bg-slate-100")
+            : " text-black hover:underline hover:underline-offset-[0.7rem] transition-all duration-200  hover:bg-slate-100")
         }
       >
         About
@@ -29,7 +29,7 @@ export default function Navbar() {
           merriweather.className +
           (path === "/assessment"
             ? " text-orange-700 transition-all duration-200 underline underline-offset-[0.7rem]"
-            : " text-black hover:text-green-500 transition-all duration-200  hover:bg-slate-100")
+            : " text-black hover:underline hover:underline-offset-[0.7rem] transition-all duration-200  hover:bg-slate-100")
         }
       >
         Assessment
