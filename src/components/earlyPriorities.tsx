@@ -1,10 +1,14 @@
 "use client";
 
 import EarlyPriorityList from "@/src/components/earlyPriorityList";
+import StageChangeButton from "./stageChangeButton";
 import { useSelector } from "react-redux";
-import type { AppState } from "@/src/store/store";
+import type { AppState } from "../store/store";
 
-export default function Home() {
+export default function Assessment() {
+  const earlyPriorities = useSelector(
+    (state: AppState) => state.earlyPriorities
+  );
   const valueList = [
     "Accountability",
     "Achievement",
@@ -125,23 +129,22 @@ export default function Home() {
     "Wisdom",
   ];
 
-  const earlyPriorities = useSelector(
-    (state: AppState) => state.earlyPriorities
-  );
-
   return (
     <div className="max-w-5xl w-full flex flex-col items-center justify-center">
       <h1 className={"text-5xl w-full text-center mb-8 merriweather"}>
         Early Priorities
       </h1>
-      <p className="text-base text-center text-balance max-w-2xl mb-12 min-w-96">
+      <p className="text-sm sm:text-base text-center text-balance max-w-2xl mb-12 min-w-96">
         Check off priorities that feel important to you. Don't worry too much
         about which are more or less important than others. If you can narrow it
         down to 15-20, that will speed up the second part of the assessment, but
         don't worry too much about narrowing down for now.
       </p>
-      {/* {JSON.stringify(earlyPriorities)} */}
       <EarlyPriorityList />
+      <StageChangeButton
+        type={"Next"}
+        condition={earlyPriorities.length >= 10}
+      />
     </div>
   );
 }
