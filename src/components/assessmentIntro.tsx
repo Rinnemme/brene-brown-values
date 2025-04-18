@@ -23,8 +23,7 @@ export default function AssessmentIntro() {
         which you can select as many as you feel are personally important to you
         in some capacity. <br></br>
         <br></br>Then, among those you have chosen, you will narrow down your
-        priorities by evaluating your chosen values two values at a time. Click
-        'next' to get started.
+        priorities by evaluating your chosen values two values at a time.
       </p>
       <Link
         className="mt-10 py-2 px-3 rounded-lg text-white bg-stone-900 hover:bg-orange-700 transition-all duration-300 hover:cursor-pointer disabled:bg-stone-400 disabled:hover:bg-stone-400 disabled:hover:cursor-default"

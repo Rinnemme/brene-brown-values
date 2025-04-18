@@ -16,9 +16,8 @@ export default function Results() {
           Your Results
         </h1>
         <p className="text-sm sm:text-base text-center text-balance max-w-xl px-8 mb-4">
-          You have finished this Brené Brown values asssement. Based upon your
-          selections over the course of this project, your most cherished values
-          are:
+          You have finished the values asssement. Based upon your selections
+          throuhgout the assessment, your most cherished values are:
         </p>
         {finalPriorities.slice(-2).map((value) => {
           return (
