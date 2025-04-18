@@ -130,11 +130,13 @@ export default function Assessment() {
   ];
 
   return (
-    <div className="max-w-5xl w-full flex flex-col items-center justify-center">
-      <h1 className={"text-5xl w-full text-center mb-8 merriweather"}>
+    <div className="fade-in max-w-5xl w-full flex flex-col items-center justify-center">
+      <h1
+        className={"text-3xl sm:text-4xl w-full text-center mb-8 merriweather"}
+      >
         Early Priorities
       </h1>
-      <p className="text-sm sm:text-base text-center text-balance max-w-2xl mb-12 min-w-96">
+      <p className="text-sm sm:text-base text-center text-balance max-w-2xl px-4 mb-12 min-w-96">
         Check off priorities that feel important to you. Don't worry too much
         about which are more or less important than others. If you can narrow it
         down to 15-20, that will speed up the second part of the assessment, but
