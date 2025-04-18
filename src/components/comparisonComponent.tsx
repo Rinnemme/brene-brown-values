@@ -13,6 +13,9 @@ import {
   lowerEndIndex,
   raiseStartIndex,
 } from "../store/comparisonSlice";
+import StageChangeButton from "./stageChangeButton";
+import CardContainer from "./comparisonCardContainer";
+import ProgressBar from "./progressBar";
 
 export default function Comparison() {
   const dispatch = useDispatch();
@@ -61,29 +64,41 @@ export default function Comparison() {
   };
 
   return (
-    <div className="flex flex-col gap-8 items-center max-w-xl px-8">
-      <h1 className="text-2xl sm:text-3xl merriweather">
-        Sort Your Priorities
-      </h1>
-      <p className="text-balance text-center">
-        Select between the two values presented below. You will see the same
-        values pop up repeatedly throughout this process; just focus on
-        selecting between the two currently presented.
-      </p>
-      <div className="flex flex-wrap items-center justify-center gap-6">
-        <ComparisonCard
-          title={earlyPriorities[evalIndex]}
-          handleClick={evalMore}
-        />
-        <ComparisonCard
-          title={
-            end <= start
-              ? finalPriorities[start]
-              : finalPriorities[Math.floor((start + end) / 2)]
-          }
-          handleClick={evalLess}
-        />
-      </div>
-    </div>
+    <>
+      {finalPriorities.length < earlyPriorities.length && (
+        <div className="flex h-full flex-col justify-center gap-8 items-center max-w-xl px-8 fade-in">
+          <h1 className="text-3xl sm:text-4xl merriweather text-center text-pretty">
+            Narrow Down Your Values
+          </h1>
+          <p className="text-balance text-center">
+            Now, select which is more personally important to you between the
+            two values presented below. You will see the same values pop up
+            repeatedly throughout this process; just focus on selecting between
+            the two being presented at any given moment.
+          </p>
+          <CardContainer
+            leftTitle={earlyPriorities[evalIndex]}
+            leftOnClick={evalMore}
+            rightTitle={
+              end <= start
+                ? finalPriorities[start]
+                : finalPriorities[Math.floor((start + end) / 2)]
+            }
+            rightOnClick={evalLess}
+          />
+          <ProgressBar />
+        </div>
+      )}
+      {finalPriorities.length === earlyPriorities.length && (
+        <div className="flex flex-col justify-center gap-8 items-center max-w-xl px-8 fade-in">
+          <h1 className="text-3xl sm:text-4xl merriweather">Nice Work!</h1>
+          <p className="text-balance text-center">
+            You have finished sorting out your values. Click the next button to
+            view your results!
+          </p>
+          <StageChangeButton />
+        </div>
+      )}
+    </>
   );
 }

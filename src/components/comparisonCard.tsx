@@ -1,5 +1,7 @@
+"use client";
+
 interface ComparisonCardProps {
-  title: String;
+  title: string;
   handleClick: () => void;
 }
 
