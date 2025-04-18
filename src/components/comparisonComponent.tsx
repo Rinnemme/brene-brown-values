@@ -3,11 +3,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import type { AppState } from "../store/store";
-import { shuffleEarlyPriorities } from "../store/earlyPrioritySlice";
 import {
   insertFinalPriority,
   setFinalPriorities,
 } from "../store/finalPrioritySlice";
+import ComparisonCard from "./comparisonCard";
 
 export default function Comparison() {
   const dispatch = useDispatch();
@@ -22,7 +22,6 @@ export default function Comparison() {
   const [end, setEnd] = useState<number>(0);
 
   useEffect(() => {
-    dispatch(shuffleEarlyPriorities());
     if (finalPriorities.length === 0) {
       dispatch(setFinalPriorities([earlyPriorities[0]]));
     }
@@ -31,7 +30,7 @@ export default function Comparison() {
   function incrementEvalIndex() {
     setEvalIndex(evalIndex + 1);
     setStart(0);
-    setEnd(finalPriorities.length - 1);
+    setEnd(finalPriorities.length);
   }
 
   const evalMore = () => {
@@ -65,13 +64,28 @@ export default function Comparison() {
   };
 
   return (
-    <div>
-      {JSON.stringify(finalPriorities)}
-      <div onClick={evalMore}>{earlyPriorities[evalIndex]}</div>
-      <div onClick={evalLess}>
-        {end <= start
-          ? finalPriorities[start]
-          : finalPriorities[Math.floor((start + end) / 2)]}
+    <div className="flex flex-col gap-8 items-center max-w-xl px-8">
+      <h1 className="text-2xl sm:text-3xl merriweather">
+        Sort Your Priorities
+      </h1>
+      <p className="text-balance text-center">
+        Select between the two values presented below. You will see the same
+        values pop up repeatedly throughout this process; just focus on
+        selecting between the two currently presented.
+      </p>
+      <div className="flex flex-wrap items-center justify-center gap-6">
+        <ComparisonCard
+          title={earlyPriorities[evalIndex]}
+          handleClick={evalMore}
+        />
+        <ComparisonCard
+          title={
+            end <= start
+              ? finalPriorities[start]
+              : finalPriorities[Math.floor((start + end) / 2)]
+          }
+          handleClick={evalLess}
+        />
       </div>
     </div>
   );
