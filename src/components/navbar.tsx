@@ -9,7 +9,7 @@ const merriweather = Merriweather({ subsets: ["latin"], weight: "400" });
 export default function Navbar() {
   const path = usePathname();
   return (
-    <div className="w-full shadow-sm px-6 py-3 flex justify-start">
+    <div className="w-full z-10 shadow-sm px-6 py-3 flex justify-start">
       <Link
         href="/"
         className={
