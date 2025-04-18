@@ -8,6 +8,11 @@ import {
   setFinalPriorities,
 } from "../store/finalPrioritySlice";
 import ComparisonCard from "./comparisonCard";
+import {
+  incrementEvalIndex,
+  lowerEndIndex,
+  raiseStartIndex,
+} from "../store/comparisonSlice";
 
 export default function Comparison() {
   const dispatch = useDispatch();
@@ -17,21 +22,15 @@ export default function Comparison() {
   const finalPriorities = useSelector(
     (state: AppState) => state.finalPriorities
   );
-  const [evalIndex, setEvalIndex] = useState<number>(1);
-  const [start, setStart] = useState<number>(0);
-  const [end, setEnd] = useState<number>(0);
+  const { start, end, evalIndex } = useSelector(
+    (state: AppState) => state.comparison
+  );
 
   useEffect(() => {
     if (finalPriorities.length === 0) {
       dispatch(setFinalPriorities([earlyPriorities[0]]));
     }
   }, []);
-
-  function incrementEvalIndex() {
-    setEvalIndex(evalIndex + 1);
-    setStart(0);
-    setEnd(finalPriorities.length);
-  }
 
   const evalMore = () => {
     if (end <= start) {
@@ -41,10 +40,9 @@ export default function Comparison() {
           value: earlyPriorities[evalIndex],
         })
       );
-      incrementEvalIndex();
+      dispatch(incrementEvalIndex({ newEnd: finalPriorities.length }));
     } else {
-      const newStart = Math.floor((start + end) / 2) + 1;
-      setStart(newStart);
+      dispatch(raiseStartIndex());
     }
   };
 
@@ -56,10 +54,9 @@ export default function Comparison() {
           value: earlyPriorities[evalIndex],
         })
       );
-      incrementEvalIndex();
+      dispatch(incrementEvalIndex({ newEnd: finalPriorities.length }));
     } else {
-      const newEnd = Math.floor((start + end) / 2) - 1;
-      setEnd(newEnd);
+      dispatch(lowerEndIndex());
     }
   };
 
