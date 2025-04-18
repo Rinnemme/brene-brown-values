@@ -2,7 +2,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: String[] = [];
+const initialState: string[] = [];
 
 export const finalPrioritySlice = createSlice({
   name: "Final Priorities",

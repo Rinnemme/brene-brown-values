@@ -2,7 +2,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: String[] = [];
+const initialState: string[] = [];
 
 function shuffle(array: Array<any>) {
   for (let i = array.length - 1; i > 0; i--) {
