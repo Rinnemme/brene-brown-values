@@ -141,10 +141,7 @@ export default function Assessment() {
         don't worry too much about narrowing down for now.
       </p>
       <EarlyPriorityList />
-      <StageChangeButton
-        type={"Next"}
-        condition={earlyPriorities.length >= 10}
-      />
+      <StageChangeButton condition={earlyPriorities.length >= 10} />
     </div>
   );
 }

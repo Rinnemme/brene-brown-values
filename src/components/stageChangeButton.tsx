@@ -1,21 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import type { AppState } from "../store/store";
-import { nextStage, previousStage } from "../store/assessmentStageSlice";
+import { nextStage } from "../store/assessmentStageSlice";
+import { shuffleEarlyPriorities } from "../store/earlyPrioritySlice";
 
 interface stageChangeProps {
   condition?: boolean;
-  type: "Next" | "Previous";
 }
 
 export default function StageChangeButton(props: stageChangeProps) {
+  const currentStage = useSelector((state: AppState) => state.assessmentStage);
   const dispatch = useDispatch();
   const handleClick = () => {
-    if (props.type === "Next") {
-      dispatch(nextStage());
-    } else {
-      dispatch(previousStage());
+    if (!currentStage) {
+      dispatch(shuffleEarlyPriorities());
     }
+    dispatch(nextStage());
   };
 
   return (
@@ -24,7 +23,7 @@ export default function StageChangeButton(props: stageChangeProps) {
       disabled={props.condition === false}
       onClick={handleClick}
     >
-      {props.type === "Next" ? `${props.type} »` : `« ${props.type}`}
+      {"Next »"}
     </button>
   );
 }

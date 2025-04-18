@@ -12,12 +12,8 @@ export const assessmentStageSlice = createSlice({
       state = state + 1;
       return state;
     },
-    previousStage: (state) => {
-      state = state - 1;
-      return state;
-    },
   },
 });
 
-export const { nextStage, previousStage } = assessmentStageSlice.actions;
+export const { nextStage } = assessmentStageSlice.actions;
 export default assessmentStageSlice.reducer;
