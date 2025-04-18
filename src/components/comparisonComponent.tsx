@@ -90,8 +90,8 @@ export default function Comparison() {
         </div>
       )}
       {finalPriorities.length === earlyPriorities.length && (
-        <div className="flex flex-col justify-center gap-8 items-center max-w-xl px-8 fade-in">
-          <h1 className="text-3xl sm:text-4xl merriweather">Nice Work!</h1>
+        <div className="flex flex-col justify-center items-center max-w-xl px-8 fade-in">
+          <h1 className="text-3xl sm:text-4xl merriweather mb-4">Nice Work!</h1>
           <p className="text-balance text-center">
             You have finished sorting out your values. Click the next button to
             view your results!
