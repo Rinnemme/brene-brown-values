@@ -121,7 +121,7 @@ export default function eartlyPriorityList() {
     "Wisdom",
   ];
   return (
-    <div className="fade-in flex flex-wrap justify-between gap-2 sm:px-8">
+    <div className="fade-in flex flex-wrap justify-between gap-y-2 sm:gap-x-2 ps-4 sm:px-8">
       {valueList.map((value) => {
         return <EarlyPriorityListItem value={value} />;
       })}
