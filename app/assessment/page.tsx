@@ -11,7 +11,7 @@ export default function Home() {
     (state: AppState) => state.assessmentStage
   );
   return (
-    <div className="w-full h-fit min-h-dvh fade-in absolute flex flex-col items-center justify-center pt-28 pb-28 sm:pt-32 sm:pb-32">
+    <div className="w-full h-full fade-in flex flex-col items-center justify-center py-12 sm:py-20">
       {assessmentStage === 0 && <EarlyPriorities />}
       {assessmentStage === 1 && <Comparison />}
       {assessmentStage === 2 && <Results />}

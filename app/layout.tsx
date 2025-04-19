@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-dvh w-full flex flex-col montserrat">
+      <body className="min-h-dvh w-full montserrat">
         <ValueProvider>
           <Navbar />
           {children}
