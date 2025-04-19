@@ -137,10 +137,11 @@ export default function Assessment() {
         Early Priorities
       </h1>
       <p className="text-sm sm:text-base text-center text-balance max-w-2xl px-4 mb-12 min-w-96">
-        Check off priorities that feel important to you. Don't worry too much
-        about which are more or less important than others. If you can narrow it
-        down to 15-20, that will speed up the second part of the assessment, but
-        don't worry too much about narrowing down for now.
+        Check off any values that feel important to you. Don't worry too much
+        about which are more or less important than others. If you can
+        comfortably narrow it down before clicking 'next', the second part of
+        the asssesment will take a bit less time, but you should prioritize
+        authenticity over selectiveness here.
       </p>
       <EarlyPriorityList />
       <StageChangeButton condition={earlyPriorities.length >= 10} />
