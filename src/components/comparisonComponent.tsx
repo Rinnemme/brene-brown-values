@@ -76,15 +76,6 @@ export default function Comparison() {
             repeatedly throughout this process; just focus on selecting between
             the two being presented at any given moment.
           </p>
-          <div>
-            {"start: " +
-              start +
-              ", end: " +
-              end +
-              ", mid: " +
-              `${Math.floor((start + end) / 2)}`}
-          </div>
-          <div>{JSON.stringify(finalPriorities)}</div>
           <CardContainer
             leftTitle={earlyPriorities[evalIndex]}
             leftOnClick={evalMore}
