@@ -36,7 +36,7 @@ export default function Comparison() {
   }, []);
 
   const evalMore = () => {
-    if (end <= start) {
+    if (end === start) {
       dispatch(
         insertFinalPriority({
           insertionIndex: start + 1,
@@ -50,7 +50,7 @@ export default function Comparison() {
   };
 
   const evalLess = () => {
-    if (end <= start || Math.floor((start + end) / 2) === 0) {
+    if (Math.floor((start + end) / 2) === start) {
       dispatch(
         insertFinalPriority({
           insertionIndex: start,
